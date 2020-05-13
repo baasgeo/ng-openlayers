@@ -1,0 +1,53 @@
+<div style="text-align:center">
+  <h1>
+    Events
+  </h1>
+</div>
+
+<ol-map olView
+        [(zoom)]="map.zoom"
+        [(center)]="map.center"
+        [rotation]="map.rotation"
+        [olLayers]="map.layers"
+        (centerChange)="logEvent($event)"
+        (zoomChange)="logEvent($event)"
+        (mapClick)="logEvent($event)"
+        (mapReady)="logEvent($event)">
+  <ol-layer (layerReady)="logEvent($event)"></ol-layer>
+  <ol-overlay [position]="popupCoordinate">
+    <ol-content>
+      <div [innerHtml]="popupCoordinate">
+      </div>
+    </ol-content>
+  </ol-overlay>
+</ol-map>
+
+<br/>
+<table class="_width100">
+  <thead>
+  <tr>
+    <th class="_width50">Name</th>
+    <th>Value</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>Zoom</td>
+    <td>{{map.zoom | json}}</td>
+  </tr>
+  <tr>
+    <td>Center</td>
+    <td>{{map.center | json}}</td>
+  </tr>
+  <tr>
+    <td>Rotation</td>
+    <td>{{map.rotation | json}}</td>
+  </tr>
+  </tbody>
+</table>
+<br/>
+<div class="note _bc-success _nightblue" style="height: 250px; overflow: auto" #scrollMe
+     [scrollTop]="scrollMe.scrollHeight">
+  Event log:<br>
+  <small *ngFor="let msg of messages">{{msg}}<br></small>
+</div>

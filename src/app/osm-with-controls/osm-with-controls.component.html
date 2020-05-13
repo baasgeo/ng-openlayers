@@ -1,0 +1,56 @@
+<div style="text-align:center">
+  <h1>
+    OSM with controls
+  </h1>
+</div>
+
+<ol-map olView
+        [(zoom)]="map.zoom"
+        [(center)]="map.center"
+        [rotation]="map.rotation"
+        [maxZoom]="map.maxZoom"
+        [minZoom]="map.minZoom"
+        [olControls]="mapControls"
+        [olLayers]="map.layers"></ol-map>
+
+<div class="row">
+  <div class="col m8">
+    <div class="card">
+      <div class="-content">
+        <h5>View</h5>
+        <div class="row">
+          <div class="col m4">
+            <button class="button" (click)="btnZoomIn()">Zoom In</button>
+          </div>
+          <div class="col m4">
+            <button class="button" (click)="bthZoomOut()">Zoom Out</button>
+          </div>
+          <div class="col m4">
+            <button class="button" (click)="btnSwitchCenter()">Pan center</button>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col m6">
+            <label for="maxZoom">maxZoom</label>
+            <input class="_full-width" type="number" id="maxZoom" [(ngModel)]="map.maxZoom">
+          </div>
+          <div class="col m6">
+            <label for="minZoom">minZoom</label>
+            <input class="_full-width" type="number" id="minZoom" [(ngModel)]="map.minZoom">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col m4">
+    <div class="card _info">
+      <div class="-content">
+        <h5>Controls</h5>
+        <label *ngFor="let control of controls">
+          <input type="checkbox" [(ngModel)]="control.checked" (change)="updateControls()">
+          <span> {{control.name}}</span>
+        </label>
+      </div>
+    </div>
+  </div>
+</div>

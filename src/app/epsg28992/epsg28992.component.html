@@ -1,0 +1,17 @@
+<div style="text-align:center">
+    <h1>
+        EPSG 28992
+    </h1>
+</div>
+
+<ol-map olView
+        [zoom]="map.zoom"
+        [center]="map.center"
+        [projection]="map.projection">
+    <ol-layer *ngFor="let layer of map.layers"
+              [layerType]="layer.layerType"
+              [sourceOptions]="layer.sourceOptions"
+              [opacity]="layer.opacity"
+              [extent]="layer.extent"
+              [visible]="layer.visible"></ol-layer>
+</ol-map>

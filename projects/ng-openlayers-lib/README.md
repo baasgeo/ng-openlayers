@@ -58,4 +58,4 @@ Live example will be viewable at locahost:4200
 
 ## License
 
-Apache-2.0 - Baas geo-information, Bart Baas <info@baasgeo.com> Copyright 2018 Baasgeo
+Apache-2.0 - Baas geo-information, Bart Baas <info@baasgeo.com> Copyright 2017 Baasgeo

@@ -1,0 +1,21 @@
+<div style="text-align:center">
+    <h1>
+        GeoJson
+    </h1>
+</div>
+
+<ol-map olView [zoom]="map.zoom" [center]="map.center" olControls>
+
+    <ol-layer *ngFor="let layer of map.layers"
+              [layerType]="layer.layerType"
+              [sourceOptions]="layer.sourceOptions"
+              [opacity]="layer.opacity"
+              [visible]="layer.visible"
+              [properties]="layer.properties">
+    </ol-layer>
+
+</ol-map>
+
+<br/>
+
+<button class="button" (click)="test()">Add layer</button>

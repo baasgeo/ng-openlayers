@@ -1,0 +1,16 @@
+<div style="text-align:center">
+  <h1>
+    Map with custom tile loader function
+  </h1>
+</div>
+
+<ol-map olView
+        [zoom]="map.zoom"
+        [center]="map.center">
+  <ol-layer *ngFor="let layer of layers"
+            [layerType]="layer.type"
+            [sourceOptions]="layer.sourceOptions"
+            [opacity]="layer.opacity"
+            [extent]="layer.extent"></ol-layer>
+</ol-map>
+

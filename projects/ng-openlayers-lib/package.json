@@ -23,14 +23,14 @@
   "dependencies": {},
   "devDependencies": {
     "@types/ol": "6.1.0",
-    "ol": "6.1.1",
+    "ol": "6.3.1",
     "proj4": "2.6.0",
     "rxjs": "~6.4.0"
   },
   "peerDependencies": {
     "@angular/common": "^8.2.8",
     "@angular/core": "^8.2.8",
-    "ol": "6.1.1",
+    "ol": "6.3.1",
     "proj4": "2.6.0"
   }
 }

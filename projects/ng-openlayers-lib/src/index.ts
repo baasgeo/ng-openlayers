@@ -7,7 +7,6 @@ import {LayerType} from './lib/models';
 import {MapComponent} from './lib/map.component';
 import {OverlayComponent} from './lib/overlay.component';
 import {ControlsDirective} from './lib/controls.directive';
-import {LayersDirective} from './lib/layers.directive';
 import {ViewDirective} from './lib/view.directive';
 import {MapService} from './lib/map.service';
 import {ContentComponent} from './lib/content.component';
@@ -18,7 +17,7 @@ export {MapService} from './lib/map.service';
 
 export {ContentComponent} from './lib/content.component';
 export {ControlsDirective} from './lib/controls.directive';
-export {LayersDirective} from './lib/layers.directive';
+export {InteractionsDirective} from './lib/interactions.directive';
 export {LayerComponent} from './lib/layer.component';
 export {LayerType, SourceType} from './lib/models';
 export {MapComponent} from './lib/map.component';
@@ -28,7 +27,6 @@ export {ViewDirective} from './lib/view.directive';
 const declarations = [
   ContentComponent,
   ControlsDirective,
-  LayersDirective,
   LayerComponent,
   InteractionsDirective,
   MapComponent,

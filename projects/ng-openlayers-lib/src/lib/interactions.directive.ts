@@ -1,4 +1,4 @@
-import {ChangeDetectorRef, Directive, Input} from '@angular/core';
+import {ChangeDetectorRef, Directive, Input, OnInit} from '@angular/core';
 import {
   DoubleClickZoom,
   DragPan,
@@ -14,8 +14,9 @@ import {MapComponent} from './map.component';
 @Directive({
   selector: 'ol-map > [olInteractions]'
 })
-export class InteractionsDirective {
+export class InteractionsDirective implements OnInit {
 
+  private interactions = [];
   private readonly interactionList = {
     dragpan: DragPan,
     dragrotate: DragRotate,
@@ -34,13 +35,23 @@ export class InteractionsDirective {
 
   @Input()
   set olInteractions(value: any[]) {
+    this.interactions = value;
+    this.setInteractions();
+  }
+
+  ngOnInit() {
+    this.setInteractions();
+  }
+
+  setInteractions() {
     const map = this.mapComponent.getMap();
     if (undefined !== map) {
       map.getInteractions().clear();
-      if (!value || value.length < 0) return;
-      for (const config of value) {
+      if (!this.interactions || this.interactions.length < 0) return;
+      for (const config of this.interactions) {
         this.addInteraction(map, config);
       }
+      this.changeDetectorRef.detectChanges();
     }
   }
 

@@ -7,6 +7,12 @@
 <ol-map olView
         [zoom]="zoom"
         [center]="center"
-        [projection]="projection"
-        [olLayers]="layers"></ol-map>
+        [projection]="projection">
+  <ol-layer *ngFor="let layer of layers"
+            [layerType]="layer.type"
+            [sourceOptions]="layer.sourceOptions"
+            [opacity]="layer.opacity"
+            [extent]="layer.extent"
+            [visible]="layer.visible"></ol-layer>
+</ol-map>
 

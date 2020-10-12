@@ -31,7 +31,7 @@ import {AsyncSubject} from 'rxjs';
 export class LayerComponent implements OnInit, OnDestroy, OnChanges {
 
   protected layer: Layer;
-  protected source: any;
+  public source: any;
 
   /**
    * This event is triggered after the layer is initialized

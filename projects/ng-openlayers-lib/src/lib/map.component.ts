@@ -11,7 +11,7 @@ import {
 import {Map, MapBrowserEvent} from 'ol';
 import {MapService} from './map.service';
 import {MapReadyEvent} from './models';
-import {AsyncSubject} from 'rxjs/index';
+import {AsyncSubject} from 'rxjs';
 import {MapOptions} from 'ol/PluggableMap';
 
 @Component({
@@ -70,6 +70,7 @@ export class MapComponent implements OnInit, OnDestroy {
     window.removeEventListener('resize', this.updateSizeThrottle);
     window.removeEventListener('orientationchange', this.updateSizeThrottle);
 
+    this.map.setTarget(null);
     this.map = null;
   }
 

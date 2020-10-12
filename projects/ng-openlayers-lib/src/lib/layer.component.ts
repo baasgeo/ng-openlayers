@@ -21,7 +21,7 @@ import VectorSource from 'ol/source/Vector';
 import {MapComponent} from './map.component';
 import {Extent, LayerType, SourceType} from './models';
 import {osmLayer, osmSource} from './util';
-import {AsyncSubject} from 'rxjs/index';
+import {AsyncSubject} from 'rxjs';
 
 @Component({
   selector: 'ol-map > ol-layer',
@@ -30,7 +30,6 @@ import {AsyncSubject} from 'rxjs/index';
 })
 export class LayerComponent implements OnInit, OnDestroy, OnChanges {
 
-  protected className: string = new Date().getTime().toString(); // Fix usage of map.forEachLayerAtPixel
   protected layer: Layer;
   protected source: any;
 

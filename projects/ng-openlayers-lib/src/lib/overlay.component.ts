@@ -9,7 +9,7 @@ import {
   OnInit,
   SimpleChanges
 } from '@angular/core';
-import Overlay, { Options } from 'ol/Overlay';
+import Overlay, {Options, PanIntoViewOptions} from 'ol/Overlay';
 import OverlayPositioning from 'ol/OverlayPositioning';
 import {MapComponent} from './map.component';
 import {Coordinate} from './models';
@@ -30,9 +30,7 @@ export class OverlayComponent implements OnInit, OnChanges, OnDestroy {
   @Input() positioning: OverlayPositioning | string;
   @Input() stopEvent: boolean;
   @Input() insertFirst: boolean;
-  @Input() autoPan: boolean;
-  @Input() autoPanAnimation: any;
-  @Input() autoPanMargin: number;
+  @Input() autoPan: PanIntoViewOptions;
 
   constructor(
     protected changeDetectorRef: ChangeDetectorRef,

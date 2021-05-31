@@ -24,7 +24,9 @@ export class EventsComponent {
 
     logEvent(event) {
         this.popupCoordinate = event.coordinate;
-        this.overlay.panIntoView(this.panIntoViewOptions);
+        if (this.overlay) {
+            this.overlay.panIntoView(this.panIntoViewOptions);
+        }
 
         this.messages.push(JSON.stringify(event, (key, val) => {
             if (typeof val === 'object' && !Array.isArray(val) && val !== null) {

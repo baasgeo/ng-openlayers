@@ -34,7 +34,7 @@ The API is documented in `documentation/`
 To compile to module to dist output directory:
 
 ```bash
-ng build --prod ng-openlayers-lib
+ng build --configuration production ng-openlayers-lib
 cd dist/ng-openlayers-lib && npm pack
 ```
 

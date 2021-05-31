@@ -30,7 +30,6 @@ export class OverlayComponent implements OnInit, OnChanges, OnDestroy {
   @Input() positioning: OverlayPositioning | string;
   @Input() stopEvent: boolean;
   @Input() insertFirst: boolean;
-  @Input() autoPan: PanIntoViewOptions;
 
   constructor(
     protected changeDetectorRef: ChangeDetectorRef,
@@ -56,14 +55,12 @@ export class OverlayComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    if (this.overlay) {
-      const properties: { [index: string]: any } = {};
-
-      for (const key in changes) {
-        properties[key] = changes[key].currentValue;
-      }
-
-      this.overlay.setProperties(properties, false);
+    if (this.overlay && changes.hasOwnProperty('position')) {
+      this.overlay.setPosition(changes.position.currentValue);
     }
+  }
+
+  panIntoView(panIntoViewOptions: PanIntoViewOptions) {
+    this.overlay.panIntoView(panIntoViewOptions);
   }
 }

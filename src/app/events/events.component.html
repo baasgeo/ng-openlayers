@@ -13,9 +13,9 @@
         (mapClick)="logEvent($event)"
         (mapReady)="logEvent($event)">
   <ol-layer (layerReady)="logEvent($event)"></ol-layer>
-  <ol-overlay [position]="popupCoordinate">
+  <ol-overlay #overlay [position]="popupCoordinate">
     <ol-content>
-      <div [innerHtml]="popupCoordinate">
+      <div class="note _bc-success _nightblue">{{popupCoordinate}}
       </div>
     </ol-content>
   </ol-overlay>

@@ -2,7 +2,7 @@
   "name": "ng-openlayers-lib",
   "description": "Angular module to interact with OpenLayers maps",
   "license": "Apache-2.0",
-  "version": "2.2.1",
+  "version": "2.4.0",
   "author": {
     "name": "Baas geo-information",
     "email": "info@baasgeo.com",
@@ -24,15 +24,13 @@
     "tslib": "^2.0.0"
   },
   "devDependencies": {
-    "@types/ol": "6.4.0",
-    "ol": "6.4.3",
-    "proj4": "2.6.2",
-    "rxjs": "~6.4.0"
+    "@types/ol": "^6.5.0",
+    "ol": "^6.5.0",
+    "proj4": "^2.7.2",
+    "rxjs": "~6.5.5"
   },
   "peerDependencies": {
-    "@angular/common": "^10.0.0",
-    "@angular/core": "^10.0.0",
-    "ol": "6.4.3",
-    "proj4": "2.6.2"
+    "ol": "^6.5.0",
+    "proj4": "^2.7.2"
   }
 }

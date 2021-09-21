@@ -2,7 +2,7 @@
   "name": "ng-openlayers-lib",
   "description": "Angular module to interact with OpenLayers maps",
   "license": "Apache-2.0",
-  "version": "2.4.0",
+  "version": "2.5.0",
   "author": {
     "name": "Baas geo-information",
     "email": "info@baasgeo.com",

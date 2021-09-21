@@ -14,7 +14,7 @@ import TileLayer from 'ol/layer/Tile';
 import VectorTileLayer from 'ol/layer/VectorTile';
 // import VectorImageLayer from 'ol/layer/VectorImage';
 import VectorTileSource from 'ol/source/VectorTile';
-import {Cluster, ImageWMS, OSM, Source, TileImage, TileWMS, WMTS, XYZ} from 'ol/source';
+import {Cluster, ImageArcGISRest, ImageWMS, OSM, Source, TileArcGISRest, TileImage, TileWMS, WMTS, XYZ} from 'ol/source';
 import VectorLayer from 'ol/layer/Vector';
 import VectorSource from 'ol/source/Vector';
 
@@ -60,11 +60,11 @@ export class LayerComponent implements OnInit, OnDestroy, OnChanges {
 
     switch (this.layerType) {
       case LayerType.IMAGE:
-        this.source = new ImageWMS(this.sourceOptions);
+        this.source = this.getSourceType(this.sourceOptions);
         this.layer = new ImageLayer(Object.assign(this, {...this.properties}));
         break;
       case LayerType.TILE:
-        this.source = this.getTileSource(this.sourceOptions);
+        this.source = this.getSourceType(this.sourceOptions);
         this.layer = new TileLayer(Object.assign(this, {...this.properties}));
         break;
       case LayerType.VECTOR_TILE:
@@ -154,13 +154,17 @@ export class LayerComponent implements OnInit, OnDestroy, OnChanges {
     this.source.updateParams(params); // {'TIME': startDate.toISOString()}
   }
 
-  private getTileSource(sourceOptions: any) {
+  private getSourceType(sourceOptions: any) {
 
     switch (sourceOptions.sourceType) {
+      case SourceType.IMAGEARCGISREST:
+        return new ImageArcGISRest(sourceOptions);
       case SourceType.IMAGEWMS:
         return new ImageWMS(sourceOptions);
       case SourceType.OSM:
         return new OSM(sourceOptions);
+      case SourceType.TILEARCGISREST:
+        return new TileArcGISRest(sourceOptions);
       case SourceType.TILEWMS:
         return new TileWMS(sourceOptions);
       case SourceType.TILEIMAGE:

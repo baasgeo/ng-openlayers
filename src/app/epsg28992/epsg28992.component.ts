@@ -15,20 +15,20 @@ export class Epsg28992Component implements OnInit {
         zoom: 2,
         projection: 'EPSG:28992',
         layers: [
-            {
-                title: 'Actueel_ortho25',
-                layerType: LayerType.TILE,
-                preload: Infinity,
-                sourceOptions: {
-                    sourceType: SourceType.XYZ,
-                    projection: 'EPSG:28992',
-                    tileGrid: new TileGrid({
-                        extent: [-285401.92, 22598.08, 595401.92, 903401.92],
-                        resolutions: [3440.640, 1720.320, 860.160, 430.080, 215.040, 107.520, 53.760, 26.880, 13.440, 6.720, 3.360, 1.680, 0.840, 0.420, 0.210]
-                    }),
-                    url: '//geodata.nationaalgeoregister.nl/luchtfoto/rgb/tms/1.0.0/Actueel_ortho25/EPSG:28992/{z}/{x}/{-y}.jpeg'
-                }
-            },
+            // {
+            //     title: 'Actueel_ortho25',
+            //     layerType: LayerType.TILE,
+            //     preload: Infinity,
+            //     sourceOptions: {
+            //         sourceType: SourceType.XYZ,
+            //         projection: 'EPSG:28992',
+            //         tileGrid: new TileGrid({
+            //             extent: [-285401.92, 22598.08, 595401.92, 903401.92],
+            //             resolutions: [3440.640, 1720.320, 860.160, 430.080, 215.040, 107.520, 53.760, 26.880, 13.440, 6.720, 3.360, 1.680, 0.840, 0.420, 0.210]
+            //         }),
+            //         url: '//geodata.nationaalgeoregister.nl/luchtfoto/rgb/tms/1.0.0/Actueel_ortho25/EPSG:28992/{z}/{x}/{-y}.jpeg'
+            //     }
+            // },
             {
                 title: 'brtachtergrondkaart',
                 opacity: 0.6,
@@ -56,8 +56,9 @@ export class Epsg28992Component implements OnInit {
                 visible: true,
                 extent: [10425, 306846, 278026, 621876],
                 sourceOptions: {
+                    sourceType: SourceType.IMAGEWMS,
                     url: '//baasgeo.mapgallery.info/geoserver/demo/wms',
-                  hidpi: true,
+                    hidpi: true,
                     params: {'LAYERS': 'demo:buurt_2012_v1'},
                     ratio: 1,
                     serverType: 'geoserver'
@@ -71,8 +72,20 @@ export class Epsg28992Component implements OnInit {
                 sourceOptions: {
                     sourceType: SourceType.TILEWMS,
                     url: '//baasgeo.mapgallery.info/geoserver/demo/wms',
-                  hidpi: true,
+                    hidpi: true,
                     params: {'LAYERS': 'demo:waterschappen2010', 'TILED': true}
+                }
+            },
+            {
+                title: 'esri:Afrastering',
+                opacity: 0.8,
+                layerType: LayerType.IMAGE,
+                visible: true,
+                sourceOptions: {
+                    sourceType: SourceType.IMAGEARCGISREST,
+                    url: 'https://rijnland.enl-mcs.nl/arcgis/rest/services/Afrastering/MapServer',
+                    hidpi: true,
+                    ratio: 1
                 }
             }
         ]

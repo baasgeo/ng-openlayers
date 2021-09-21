@@ -8,7 +8,7 @@ import {
   Output,
   SimpleChanges
 } from '@angular/core';
-import View from 'ol/View';
+import View, {ViewOptions} from 'ol/View';
 import {Coordinate, Extent} from './models';
 import {MapComponent} from './map.component';
 import {ProjectionLike} from 'ol/proj';
@@ -29,20 +29,13 @@ export class ViewDirective implements OnInit, AfterViewInit, OnChanges, OnDestro
   @Output() rotationChange: EventEmitter<number> = new EventEmitter<number>();
   @Output() zoomChange: EventEmitter<number> = new EventEmitter<number>();
 
-  @Input() constrainRotation: boolean | number;
-  @Input() constrainResolution: boolean;
-  @Input() enableRotation: boolean;
   @Input() extent: Extent;
-  @Input() maxResolution: number;
-  @Input() minResolution: number;
   @Input() maxZoom: number;
   @Input() minZoom: number;
-  @Input() multiWorld: boolean;
+  @Input() olViewOptions: ViewOptions;
   @Input() resolution: number;
-  @Input() resolutions: number[];
   @Input() rotation: number;
   @Input() zoom: number;
-  @Input() zoomFactor: number;
   @Input() center: Coordinate;
   @Input() projection: ProjectionLike;
 
@@ -52,7 +45,7 @@ export class ViewDirective implements OnInit, AfterViewInit, OnChanges, OnDestro
   }
 
   ngOnInit() {
-    this.view = new View(this);
+    this.view = new View(Object.assign({}, this, this.olViewOptions));
     const map = this.mapComponent.getMap();
     if (map) {
       map.setView(this.view);

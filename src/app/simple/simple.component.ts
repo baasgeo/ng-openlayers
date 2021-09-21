@@ -6,5 +6,8 @@ import {Component} from '@angular/core';
 })
 export class SimpleComponent {
 
+  olViewOptions = {
+    constrainResolution: true
+  };
 
 }
